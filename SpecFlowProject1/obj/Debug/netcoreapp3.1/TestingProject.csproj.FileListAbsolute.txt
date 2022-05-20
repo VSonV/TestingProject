@@ -111,3 +111,15 @@ D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\Testi
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.pdb
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.genruntimeconfig.cache
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\WebDriver.dll
