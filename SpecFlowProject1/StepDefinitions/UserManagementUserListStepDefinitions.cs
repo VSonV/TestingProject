@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium.Interactions;
 
 namespace TestingProject.StepDefinitions
 {
@@ -48,34 +49,64 @@ namespace TestingProject.StepDefinitions
 
             //open the browser
             _driver.Navigate().GoToUrl(_HomePageUrl);
+            _driver.Manage().Window.Maximize();
 
-            //wait for companies are loaded (by calling api)
-            var waitCompanyLoad = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            waitCompanyLoad.Until(ExpectedConditions.ElementIsVisible(By.ClassName("ng-value-label")));
+            //wait for home page is loaded
+            var mainPageLoad = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            mainPageLoad.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[text()=' Sign in ']")));
         }
 
         [Given(@"The user logins as admin with role = ""([^""]*)"" on login page")]
         public void GivenTheUserLoginsAsAdminWithRoleOnLoginPage(string delete)
         {
-            throw new PendingStepException();
+            var userNameId = _driver.FindElement(By.XPath("//label[text()='Username']"))?.GetAttribute("for");
+            _driver.FindElement(By.Id(userNameId))?.SendKeys(_UserName);
+            var passwordId = _driver.FindElement(By.XPath("//label[text()='Password']"))?.GetAttribute("for");
+            _driver.FindElement(By.Id(passwordId))?.SendKeys(_Pwd);
+
+            _driver.FindElement(By.XPath("//div[text()=' Sign in ']")).Click();
         }
 
         [Given(@"The user clicks on User Management page on the menu")]
         public void GivenTheUserClicksOnUserManagementPageOnTheMenu()
         {
-            throw new PendingStepException();
+            //wait for home page is loaded
+            var mainPageLoad = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            mainPageLoad.Until(ExpectedConditions.ElementIsVisible(By.XPath("//img[@src='/img/LDP-LogoIcon.f9e7d727.png']")));
+            var actions = new Actions(_driver);
+
+            //hovor over leftside menu
+            var mainMenu = _driver.FindElement(By.XPath("//img[@src='/img/LDP-LogoIcon.f9e7d727.png']"));
+            actions.MoveToElement(mainMenu).Perform();
+
+            //click on Accounts menu item
+             _driver.FindElement(By.XPath("//li[@to='/accounts']"))?.Click();
+
+            //click on User management menu item
+             _driver.FindElement(By.XPath("//span[text()='User management']")).Click();
         }
 
         [Given(@"The user is on the User list")]
         public void GivenTheUserIsOnTheUserList()
         {
-            throw new PendingStepException();
+            var userManagementCls = _driver.FindElement(By.CssSelector("div[class='wrapper UserManagement-page']"));
+            if (userManagementCls == null)
+                throw new NotFoundException();
         }
 
         [Then(@"The user sees elements on User list as the following table")]
         public void ThenTheUserSeesElementsOnUserListAsTheFollowingTable()
         {
-            throw new PendingStepException();
+            
+            var numberPerPageFilter = _driver.FindElement(By.Id("vs1__combobox"))?.Text;//number per page filter
+            var userTypeFilter = _driver.FindElement(By.Id("vs4__combobox"))?.Text;//user type filter
+            var statusFilter = _driver.FindElement(By.Id("vs5__combobox"))?.Text;//status filter
+            var searchBar = _driver.FindElement(By.CssSelector("div[class='md-field input-search md-theme-default md-has-placeholder']"))?.Text;//search bar
+            var addUserBtn = _driver.FindElement(By.XPath("//div[text()='Add user']"))?.Text;//button add user
+
+            var mainTblHeader = _driver.FindElement(By.XPath("//div/thead/tr"))?.Text;
+            var tmp = mainTblHeader.Contains("User Type");
+           
         }
     }
 }

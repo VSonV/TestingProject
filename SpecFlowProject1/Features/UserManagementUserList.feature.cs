@@ -28,7 +28,7 @@ namespace TestingProject.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "UserManagement_UserList.feature"
+#line 1 "UserManagementUserList.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]

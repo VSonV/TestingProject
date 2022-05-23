@@ -5,6 +5,9 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Opera;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
+
 
 namespace TestingProject
 {
@@ -23,19 +26,24 @@ namespace TestingProject
             switch (browserVal)
             {
                 case (int)Browser.Chrome:
-                    driver = new ChromeDriver(System.Environment.CurrentDirectory);
+                    new DriverManager().SetUpDriver(new ChromeConfig());
+                    driver = new ChromeDriver();
                     break;
                 case (int)Browser.FireFox:
-                    driver = new FirefoxDriver(System.Environment.CurrentDirectory);
+                    new DriverManager().SetUpDriver(new FirefoxConfig());
+                    driver = new FirefoxDriver();
                     break;
                 case (int)Browser.Edge:
-                    driver = new EdgeDriver(System.Environment.CurrentDirectory);
+                    new DriverManager().SetUpDriver(new EdgeConfig());
+                    driver = new EdgeDriver();
                     break;
                 case (int)Browser.IE:
-                    driver = new InternetExplorerDriver(System.Environment.CurrentDirectory);
+                    new DriverManager().SetUpDriver(new InternetExplorerConfig());
+                    driver = new InternetExplorerDriver();
                     break;
                 default:
-                    driver = new OperaDriver(System.Environment.CurrentDirectory);
+                    new DriverManager().SetUpDriver(new OperaConfig());
+                    driver = new OperaDriver();
                     break;
             }
 
