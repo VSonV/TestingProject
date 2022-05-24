@@ -1,4 +1,3 @@
-D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Drivers\chromedriver.exe
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\LivingDoc.Dtos.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\LivingDoc.SpecFlowPlugin.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll

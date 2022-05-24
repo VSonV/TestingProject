@@ -120,14 +120,30 @@ namespace TestingProject.StepDefinitions
         [When(@"The user clicks on <column name> on User List")]
         public void WhenTheUserClicksOnColumnNameOnUserList()
         {
-            throw new PendingStepException();
+            Thread.Sleep(2000);
+            _driver.FindElement(By.XPath("//div[text()=' User Type ']"))?.Click();//user type column
+            
+            Thread.Sleep(2000);
+            _driver.FindElement(By.XPath("//div[text()=' First Name ']"))?.Click();//first name column
+
+            Thread.Sleep(2000);
+            _driver.FindElement(By.XPath("//div[text()=' Last Name ']"))?.Click();//last name column
+
+            Thread.Sleep(2000);
+            _driver.FindElement(By.XPath("//div[text()=' Username ']"))?.Click();//user name column
+
+            Thread.Sleep(2000);
+            _driver.FindElement(By.XPath("//div[text()=' Email ']"))?.Click();//email column
+
+            
         }
 
         [Then(@"the <column name> is sorted on User List")]
         public void ThenTheColumnNameIsSortedOnUserList()
         {
-            throw new PendingStepException();
+            Thread.Sleep(3000);
         }
 
     }
 }
+
