@@ -1,4 +1,4 @@
-using System;
+using System.Text;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -16,6 +16,7 @@ namespace TestingProject.StepDefinitions
         private string _UserName;
         private string _Pwd;
         private IConfigurationRoot _configuration;
+        private int _delayTime;
 
         [Given(@"The user launches the application")]
         public void GivenTheUserLaunchesTheApplication()
@@ -32,18 +33,21 @@ namespace TestingProject.StepDefinitions
                     _UserName = _configuration.GetSection("AppSettings").GetSection("UserProd").Value;
                     _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdProd").Value;
                     _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeProd").Value));
+                    _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeProd").Value);
                     break;
                 case (int)RunEnvironment.Staging:
                     _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlStaging").Value;
                     _UserName = _configuration.GetSection("AppSettings").GetSection("UserStaging").Value;
                     _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdStaging").Value;
                     _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeStaging").Value));
+                    _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeStaging").Value);
                     break;
                 default:
                     _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlLocal").Value;
                     _UserName = _configuration.GetSection("AppSettings").GetSection("UserLocal").Value;
                     _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdLocal").Value;
                     _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeLocal").Value));
+                    _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeLocal").Value);
                     break;
             }
 
@@ -120,19 +124,19 @@ namespace TestingProject.StepDefinitions
         [When(@"The user clicks on <column name> on User List")]
         public void WhenTheUserClicksOnColumnNameOnUserList()
         {
-            Thread.Sleep(2000);
-            _driver.FindElement(By.XPath("//div[text()=' User Type ']"))?.Click();//user type column
+            //Thread.Sleep(_delayTime);
+            //_driver.FindElement(By.XPath("//div[text()=' User Type ']"))?.Click();//user type column
             
-            Thread.Sleep(2000);
-            _driver.FindElement(By.XPath("//div[text()=' First Name ']"))?.Click();//first name column
+            //Thread.Sleep(_delayTime);
+            //_driver.FindElement(By.XPath("//div[text()=' First Name ']"))?.Click();//first name column
 
-            Thread.Sleep(2000);
-            _driver.FindElement(By.XPath("//div[text()=' Last Name ']"))?.Click();//last name column
+            //Thread.Sleep(_delayTime);
+            //_driver.FindElement(By.XPath("//div[text()=' Last Name ']"))?.Click();//last name column
 
-            Thread.Sleep(2000);
-            _driver.FindElement(By.XPath("//div[text()=' Username ']"))?.Click();//user name column
+            //Thread.Sleep(_delayTime);
+            //_driver.FindElement(By.XPath("//div[text()=' Username ']"))?.Click();//user name column
 
-            Thread.Sleep(2000);
+            Thread.Sleep(_delayTime);
             _driver.FindElement(By.XPath("//div[text()=' Email ']"))?.Click();//email column
 
             
@@ -141,7 +145,18 @@ namespace TestingProject.StepDefinitions
         [Then(@"the <column name> is sorted on User List")]
         public void ThenTheColumnNameIsSortedOnUserList()
         {
-            Thread.Sleep(3000);
+            var userTypeList = new StringBuilder();
+            //get table rows
+            var userTable = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr"));
+            foreach(var tblRow in userTable)
+            {
+                var columns = tblRow.Text.Split("\r");
+                for (int i = 0; i < columns.Length; i++)
+                {
+                    userTypeList.Append(i);
+                }
+            }
+            var tmp = userTypeList.ToString();
         }
 
     }
