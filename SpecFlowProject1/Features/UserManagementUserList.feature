@@ -16,3 +16,8 @@ Scenario: verify sort function
 	When The user clicks on <column name> on User List
 	Then the <column name> is sorted on User List
 
+Scenario: verify UI of Number per page filter
+	Given The user is on the User list
+	When The user opens the filter "Number Page"
+	Then The user sees items in the dropdown as following table: 25 per page | 50 per page
+

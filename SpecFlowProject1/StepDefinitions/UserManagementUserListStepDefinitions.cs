@@ -218,6 +218,25 @@ namespace TestingProject.StepDefinitions
             _driver.Quit();
         }
 
+        [When(@"The user opens the filter ""([^""]*)""")]
+        public void WhenTheUserOpensTheFilter(string p0)
+        {
+            Thread.Sleep(_delayTime); 
+            _driver.FindElement(By.Id("vs1__combobox"))?.Click();
+           
+        }
+
+        [Then(@"The user sees items in the dropdown as following table: (.*) per page \| (.*) per page")]
+        public void ThenTheUserSeesItemsInTheDropdownAsFollowingTablePerPagePerPage(int p0, int p1)
+        {
+            Thread.Sleep(_delayTime);
+            var itemPerPageList = _driver.FindElement(By.Id("vs1__listbox")).Text;
+            Assert.IsTrue(itemPerPageList.Contains(p0.ToString()) && itemPerPageList.Contains(p1.ToString()));
+
+            _driver.Quit();
+        }
+
+
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
         {
             var userTable = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr"));
