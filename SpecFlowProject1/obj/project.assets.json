@@ -739,6 +739,18 @@
           }
         }
       },
+      "Selenium.Support/4.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/WebDriver.Support.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/WebDriver.Support.dll": {}
+        }
+      },
       "Selenium.WebDriver/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -3163,6 +3175,25 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "Selenium.Support/4.1.1": {
+      "sha512": "jxvHv+0KmovNeqBuWF0eAGdIt6MLCwdyZB4R569nppEZyityqhwmT2YXEXtGeqBCviGT0pfAhy1lyM4T5gaBIQ==",
+      "type": "package",
+      "path": "selenium.support/4.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/icon.png",
+        "lib/net45/WebDriver.Support.dll",
+        "lib/net46/WebDriver.Support.dll",
+        "lib/net47/WebDriver.Support.dll",
+        "lib/net48/WebDriver.Support.dll",
+        "lib/net5.0/WebDriver.Support.dll",
+        "lib/netstandard2.0/WebDriver.Support.dll",
+        "lib/netstandard2.1/WebDriver.Support.dll",
+        "selenium.support.4.1.1.nupkg.sha512",
+        "selenium.support.nuspec"
       ]
     },
     "Selenium.WebDriver/4.1.1": {
@@ -6320,6 +6351,7 @@
       "Microsoft.Extensions.Configuration.Json >= 6.0.0",
       "Microsoft.NET.Test.Sdk >= 17.0.0",
       "NUnit3TestAdapter >= 4.1.0",
+      "Selenium.Support >= 4.1.1",
       "Selenium.WebDriver >= 4.1.1",
       "SpecFlow.NUnit >= 3.9.40",
       "SpecFlow.Plus.LivingDocPlugin >= 3.9.57",
@@ -6389,6 +6421,10 @@
           "NUnit3TestAdapter": {
             "target": "Package",
             "version": "[4.1.0, )"
+          },
+          "Selenium.Support": {
+            "target": "Package",
+            "version": "[4.1.1, )"
           },
           "Selenium.WebDriver": {
             "target": "Package",

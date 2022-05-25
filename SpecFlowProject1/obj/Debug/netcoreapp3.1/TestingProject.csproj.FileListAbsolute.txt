@@ -137,3 +137,4 @@ D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\Testi
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.pdb
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.genruntimeconfig.cache
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\WebDriver.Support.dll

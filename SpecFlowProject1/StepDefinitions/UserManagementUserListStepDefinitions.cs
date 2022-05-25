@@ -223,7 +223,6 @@ namespace TestingProject.StepDefinitions
         {
             Thread.Sleep(_delayTime); 
             _driver.FindElement(By.Id("vs1__combobox"))?.Click();
-           
         }
 
         [Then(@"The user sees items in the dropdown as following table: (.*) per page \| (.*) per page")]
@@ -234,6 +233,25 @@ namespace TestingProject.StepDefinitions
             Assert.IsTrue(itemPerPageList.Contains(p0.ToString()) && itemPerPageList.Contains(p1.ToString()));
 
             _driver.Quit();
+        }
+
+        [When(@"The user selects a (.*) per page in the filter")]
+        public void WhenTheUserSelectsAPerPageInTheFilter(int p0)
+        {
+            var pageList = _driver.FindElement(By.Id("vs1__listbox"));
+            new SelectElement(pageList).SelectByText(p0.ToString());
+        }
+
+        [Then(@"The user sees the (.*) per page of records are displayed on User List")]
+        public void ThenTheUserSeesThePerPageOfRecordsAreDisplayedOnUserList(int p0)
+        {
+            throw new PendingStepException();
+        }
+
+        [Then(@"The user sees the text ""([^""]*)"" (.*) per page ""([^""]*)"" on User List")]
+        public void ThenTheUserSeesTheTextPerPageOnUserList(string p0, int p1, string p2)
+        {
+            throw new PendingStepException();
         }
 
 
