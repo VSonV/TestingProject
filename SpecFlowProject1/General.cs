@@ -67,4 +67,9 @@ namespace TestingProject
         IE,
         Opera
     }
+
+    public class UserType
+    {
+        public string Name { get; set; }
+    }
 }

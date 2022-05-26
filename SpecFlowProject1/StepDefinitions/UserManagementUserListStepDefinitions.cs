@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 
@@ -218,12 +219,13 @@ namespace TestingProject.StepDefinitions
             _driver.Quit();
         }
 
-        [When(@"The user opens the filter ""([^""]*)""")]
-        public void WhenTheUserOpensTheFilter(string p0)
+        [When(@"The user opens the filter Number Page")]
+        public void WhenTheUserOpensTheFilterNumberPage()
         {
-            Thread.Sleep(_delayTime); 
+            Thread.Sleep(_delayTime);
             _driver.FindElement(By.Id("vs1__combobox"))?.Click();
         }
+
 
         [Then(@"The user sees items in the dropdown as following table: (.*) per page \| (.*) per page")]
         public void ThenTheUserSeesItemsInTheDropdownAsFollowingTablePerPagePerPage(int p0, int p1)
@@ -244,7 +246,6 @@ namespace TestingProject.StepDefinitions
         [Then(@"The user sees the (.*) per page of records are displayed on User List")]
         public void ThenTheUserSeesThePerPageOfRecordsAreDisplayedOnUserList(int p0)
         {
-            Thread.Sleep(_delayTime);
             var userTableRows = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr"));
             Assert.IsTrue(userTableRows?.Count <= p0);
         }
@@ -252,12 +253,35 @@ namespace TestingProject.StepDefinitions
         [Then(@"The user sees the text ""([^""]*)"" (.*) per page ""([^""]*)"" on User List")]
         public void ThenTheUserSeesTheTextPerPageOnUserList(string p0, int p1, string p2)
         {
-            Thread.Sleep(_delayTime);
             var userTableRows = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr")).Count;
             var searchStr = userTableRows <= p1 ? $"{p0} {userTableRows} of " : $"{p0} {p1} of";
             var pagingContent= _driver.FindElement(By.XPath("//div[@class='paginator']/div[@class='left-side']/p"))?.Text;
             Assert.IsTrue(pagingContent?.Contains(searchStr));
+
+            _driver.Quit();
         }
+
+        [When(@"The user opens the filter User Type")]
+        public void WhenTheUserOpensTheFilterUserType()
+        {
+            Thread.Sleep(_delayTime);
+            _driver.FindElement(By.Id("vs4__combobox"))?.Click();
+        }
+
+        
+        [Then(@"The user sees the items in the dropdown as the following table")]
+        public void ThenTheUserSeesTheItemsInTheDropdownAsTheFollowingTable(Table table)
+        {
+            string tblRow = string.Join("", table.Rows.Select(x => x[0].ToString().Replace(" ", string.Empty)));
+
+            var userTypeRows = _driver.FindElement(By.XPath("//ul[@id='vs4__listbox']"));
+            string tmp = System.Text.RegularExpressions.Regex.Replace(userTypeRows.Text, @"\s+", string.Empty);
+
+            Assert.AreEqual(tmp, tblRow);
+            _driver.Quit();
+        }
+
+
 
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
         {

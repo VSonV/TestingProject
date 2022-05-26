@@ -205,7 +205,7 @@ this.FeatureBackground();
  testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 21
- testRunner.When("The user opens the filter \"Number Page\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("The user opens the filter Number Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 22
  testRunner.Then("The user sees items in the dropdown as following table: 25 per page | 50 per page" +
@@ -252,7 +252,7 @@ this.FeatureBackground();
  testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 26
- testRunner.When("The user opens the filter \"Number Page\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("The user opens the filter Number Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
  testRunner.And(string.Format("The user selects a {0} in the filter", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -261,7 +261,64 @@ this.FeatureBackground();
  testRunner.Then(string.Format("The user sees the {0} of records are displayed on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 29
- testRunner.And(string.Format("The user sees the text \"Showing 1 to xx\" {0} \"of [Total] entries\" on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("The user sees the text \"Showing 1 to\" {0} \"of [Total] entries\" on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("verify UI of User Type filter")]
+        public virtual void VerifyUIOfUserTypeFilter()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify UI of User Type filter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 36
+ testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 37
+ testRunner.When("The user opens the filter User Type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table1.AddRow(new string[] {
+                            "Administrator"});
+                table1.AddRow(new string[] {
+                            "Clinic Associate"});
+                table1.AddRow(new string[] {
+                            "Clinician"});
+                table1.AddRow(new string[] {
+                            "Clinician Associate"});
+                table1.AddRow(new string[] {
+                            "Lab Technician"});
+                table1.AddRow(new string[] {
+                            "Pathologist"});
+#line 38
+ testRunner.Then("The user sees the items in the dropdown as the following table", ((string)(null)), table1, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
