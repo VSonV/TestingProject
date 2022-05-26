@@ -261,7 +261,7 @@ this.FeatureBackground();
  testRunner.Then(string.Format("The user sees the {0} of records are displayed on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 29
- testRunner.And(string.Format("The user sees the text \"Showing 1 to\" {0} \"of [Total] entries\" on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("The user sees the text \"Showing 1 to xx\" {0} \"of [Total] entries\" on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

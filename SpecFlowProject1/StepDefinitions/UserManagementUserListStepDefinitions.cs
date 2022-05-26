@@ -238,22 +238,26 @@ namespace TestingProject.StepDefinitions
         [When(@"The user selects a (.*) per page in the filter")]
         public void WhenTheUserSelectsAPerPageInTheFilter(int p0)
         {
-            var pageList = _driver.FindElement(By.Id("vs1__listbox"));
-            new SelectElement(pageList).SelectByText(p0.ToString());
+            _driver.FindElement(By.XPath($"//*[text()='{p0} per page']"))?.Click();
         }
 
         [Then(@"The user sees the (.*) per page of records are displayed on User List")]
         public void ThenTheUserSeesThePerPageOfRecordsAreDisplayedOnUserList(int p0)
         {
-            throw new PendingStepException();
+            Thread.Sleep(_delayTime);
+            var userTableRows = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr"));
+            Assert.IsTrue(userTableRows?.Count <= p0);
         }
 
         [Then(@"The user sees the text ""([^""]*)"" (.*) per page ""([^""]*)"" on User List")]
         public void ThenTheUserSeesTheTextPerPageOnUserList(string p0, int p1, string p2)
         {
-            throw new PendingStepException();
+            Thread.Sleep(_delayTime);
+            var userTableRows = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr")).Count;
+            var searchStr = userTableRows <= p1 ? $"{p0} {userTableRows} of " : $"{p0} {p1} of";
+            var pagingContent= _driver.FindElement(By.XPath("//div[@class='paginator']/div[@class='left-side']/p"))?.Text;
+            Assert.IsTrue(pagingContent?.Contains(searchStr));
         }
-
 
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
         {
