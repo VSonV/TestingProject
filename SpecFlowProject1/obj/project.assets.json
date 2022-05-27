@@ -772,7 +772,7 @@
           "lib/netstandard2.1/ICSharpCode.SharpZipLib.dll": {}
         }
       },
-      "SpecFlow/3.9.40": {
+      "SpecFlow/3.9.74": {
         "type": "package",
         "dependencies": {
           "BoDi": "1.5.0",
@@ -3236,10 +3236,10 @@
         "sharpziplib.nuspec"
       ]
     },
-    "SpecFlow/3.9.40": {
-      "sha512": "ru7twstJSKrTv3XfcxyttzrdZ/FvXOF5cYN/x/2js755wVk1zpSPUPa/ml3lSZmPNkS5OAOuSt1JLEa5hhDhdw==",
+    "SpecFlow/3.9.74": {
+      "sha512": "n6kcg9ZeQWxqJFoT23SsFT89U1QQNwvcN9pAX5alB6ZPr6K0p5D5nGIJ1PZsSaFaRFutiwQ+DicmxBCPAZVYIA==",
       "type": "package",
-      "path": "specflow/3.9.40",
+      "path": "specflow/3.9.74",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3258,7 +3258,7 @@
         "lib/netstandard2.0/TechTalk.SpecFlow.dll",
         "lib/netstandard2.0/TechTalk.SpecFlow.pdb",
         "lib/netstandard2.0/TechTalk.SpecFlow.xml",
-        "specflow.3.9.40.nupkg.sha512",
+        "specflow.3.9.74.nupkg.sha512",
         "specflow.nuspec"
       ]
     },
@@ -6353,6 +6353,7 @@
       "NUnit3TestAdapter >= 4.1.0",
       "Selenium.Support >= 4.1.1",
       "Selenium.WebDriver >= 4.1.1",
+      "SpecFlow >= 3.9.74",
       "SpecFlow.NUnit >= 3.9.40",
       "SpecFlow.Plus.LivingDocPlugin >= 3.9.57",
       "WebDriverManager >= 2.13.0",
@@ -6430,6 +6431,10 @@
             "target": "Package",
             "version": "[4.1.1, )"
           },
+          "SpecFlow": {
+            "target": "Package",
+            "version": "[3.9.74, )"
+          },
           "SpecFlow.NUnit": {
             "target": "Package",
             "version": "[3.9.40, )"
@@ -6465,5 +6470,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: SpecFlow.NUnit 3.9.40 requires SpecFlow (= 3.9.40) but version SpecFlow 3.9.74 was resolved.",
+      "libraryId": "SpecFlow",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: SpecFlow.Tools.MsBuild.Generation 3.9.40 requires SpecFlow (= 3.9.40) but version SpecFlow 3.9.74 was resolved.",
+      "libraryId": "SpecFlow",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

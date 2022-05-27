@@ -72,6 +72,10 @@
               "target": "Package",
               "version": "[4.1.1, )"
             },
+            "SpecFlow": {
+              "target": "Package",
+              "version": "[3.9.74, )"
+            },
             "SpecFlow.NUnit": {
               "target": "Package",
               "version": "[3.9.40, )"

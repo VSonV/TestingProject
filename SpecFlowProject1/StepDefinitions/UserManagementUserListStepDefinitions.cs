@@ -237,8 +237,8 @@ namespace TestingProject.StepDefinitions
             _driver.Quit();
         }
 
-        [When(@"The user selects a (.*) per page in the filter")]
-        public void WhenTheUserSelectsAPerPageInTheFilter(int p0)
+        [When(@"The user selects a (.*) per page in the Number Page filter")]
+        public void WhenTheUserSelectsAPerPageInTheNumberPageFilter(int p0)
         {
             _driver.FindElement(By.XPath($"//*[text()='{p0} per page']"))?.Click();
         }
@@ -280,12 +280,13 @@ namespace TestingProject.StepDefinitions
             _driver.Quit();
         }
 
-
-        [When(@"The user selects a (.*) in the filter")]
-        public void WhenTheUserSelectsAInTheFilter(string p0)
+        [When(@"The user selects an  (.*) in the User Type filter")]
+        public void WhenTheUserSelectsAnInTheUserTypeFilter(string p0)
         {
             _driver.FindElement(By.XPath($"//*[text()='{p0}']"))?.Click();
         }
+
+
 
         [Then(@"The user sees only (.*) records are displayed on User List")]
         public void ThenTheUserSeesOnlyRecordsAreDisplayedOnUserList(string p0)

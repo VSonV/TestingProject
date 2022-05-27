@@ -24,7 +24,7 @@ Scenario: verify UI of Number per page filter
 Scenario Outline: verify function of each item in Numbper per page filter
 	Given The user is on the User list
 	When The user opens the filter Number Page
-	And The user selects a <number> in the filter
+	And The user selects a <number> in the Number Page filter
 	Then The user sees the <number> of records are displayed on User List
 	And The user sees the text "Showing 1 to" <number> "of [Total] entries" on User List
 Examples: 
@@ -47,16 +47,19 @@ Scenario: verify UI of User Type filter
 Scenario Outline: verify fucntion of each item in User Type filter
 	Given The user is on the User list
 	When The user opens the filter User Type
-	And The user selects a <user type> in the filter
-	Then The user sees only <user type> records are displayed on User List
+	And The user selects an  <string> in the User Type filter
+	Then The user sees only <string> records are displayed on User List
 
 	Examples: 
-| user type           |
+| string           |
 | Administrator       |
 | Clinic Associate    |
 | Clinician           |
 | Clinician Associate |
 | Lab Technician      |
 | Pathologist         |
+
+
+
 
 

@@ -255,7 +255,7 @@ this.FeatureBackground();
  testRunner.When("The user opens the filter Number Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
- testRunner.And(string.Format("The user selects a {0} in the filter", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("The user selects a {0} in the Number Page filter", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 28
  testRunner.Then(string.Format("The user sees the {0} of records are displayed on User List", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -332,11 +332,11 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("Clinician Associate", null)]
         [NUnit.Framework.TestCaseAttribute("Lab Technician", null)]
         [NUnit.Framework.TestCaseAttribute("Pathologist", null)]
-        public virtual void VerifyFucntionOfEachItemInUserTypeFilter(string userType, string[] exampleTags)
+        public virtual void VerifyFucntionOfEachItemInUserTypeFilter(string @string, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("user type", userType);
+            argumentsOfScenario.Add("string", @string);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify fucntion of each item in User Type filter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 47
 this.ScenarioInitialize(scenarioInfo);
@@ -368,10 +368,10 @@ this.FeatureBackground();
  testRunner.When("The user opens the filter User Type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 50
- testRunner.And(string.Format("The user selects a {0} in the filter", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("The user selects an  {0} in the User Type filter", @string), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 51
- testRunner.Then(string.Format("The user sees only {0} records are displayed on User List", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("The user sees only {0} records are displayed on User List", @string), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
