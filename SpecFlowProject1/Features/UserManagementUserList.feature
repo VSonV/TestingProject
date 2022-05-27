@@ -70,4 +70,13 @@ Scenario: verify UI of Status filter
 	| Disabled |
 	| Invited  |
 
-
+Scenario Outline: verify function of each item in Status filter
+	Given The user is on the User list
+	When The user open the Status filter
+	And The user selects a <Status> in the Status filter
+	Then The user sees only <Status> Status records filted are displayed on User List
+Examples: 
+| Name     |
+| Enabled  |
+| Disabled |
+| Invited  |

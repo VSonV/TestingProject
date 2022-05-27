@@ -322,6 +322,18 @@ namespace TestingProject.StepDefinitions
         }
 
 
+        [When(@"The user selects a <Status> in the Status filter")]
+        public void WhenTheUserSelectsAStatusInTheStatusFilter()
+        {
+            throw new PendingStepException();
+        }
+
+        [Then(@"The user sees only <Status> Status records filted are displayed on User List")]
+        public void ThenTheUserSeesOnlyStatusStatusRecordsFiltedAreDisplayedOnUserList()
+        {
+            throw new PendingStepException();
+        }
+
 
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
         {
