@@ -36,13 +36,27 @@ Scenario: verify UI of User Type filter
 	Given The user is on the User list
 	When The user opens the filter User Type
 	Then The user sees the items in the dropdown as the following table
-	| Name                |
-	| Administrator       |
-	| Clinic Associate    |
-	| Clinician           |
-	| Clinician Associate |
-	| Lab Technician      |
-	| Pathologist         |
+| Name                |
+| Administrator       |
+| Clinic Associate    |
+| Clinician           |
+| Clinician Associate |
+| Lab Technician      |
+| Pathologist         |
 
-	
+Scenario Outline: verify fucntion of each item in User Type filter
+	Given The user is on the User list
+	When The user opens the filter User Type
+	And The user selects a <user type> in the filter
+	Then The user sees only <user type> records are displayed on User List
+
+	Examples: 
+| user type           |
+| Administrator       |
+| Clinic Associate    |
+| Clinician           |
+| Clinician Associate |
+| Lab Technician      |
+| Pathologist         |
+
 

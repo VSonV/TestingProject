@@ -267,7 +267,6 @@ namespace TestingProject.StepDefinitions
             Thread.Sleep(_delayTime);
             _driver.FindElement(By.Id("vs4__combobox"))?.Click();
         }
-
         
         [Then(@"The user sees the items in the dropdown as the following table")]
         public void ThenTheUserSeesTheItemsInTheDropdownAsTheFollowingTable(Table table)
@@ -279,6 +278,24 @@ namespace TestingProject.StepDefinitions
 
             Assert.AreEqual(tmp, tblRow);
             _driver.Quit();
+        }
+
+
+        [When(@"The user selects a (.*) in the filter")]
+        public void WhenTheUserSelectsAInTheFilter(string p0)
+        {
+            _driver.FindElement(By.XPath($"//*[text()='{p0}']"))?.Click();
+        }
+
+        [Then(@"The user sees only (.*) records are displayed on User List")]
+        public void ThenTheUserSeesOnlyRecordsAreDisplayedOnUserList(string p0)
+        {
+            Thread.Sleep(_delayTime);
+            var userTypeTbl = new StringBuilder();
+            GetTableVal(ref userTypeTbl, 0);
+            var result = userTypeTbl.ToString().Contains(p0);
+            Assert.IsTrue(result);
+            _driver.Close();
         }
 
 
