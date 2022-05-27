@@ -274,7 +274,7 @@ this.FeatureBackground();
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify UI of User Type filter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 35
+#line 36
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -297,10 +297,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line hidden
-#line 36
+#line 37
  testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 37
+#line 38
  testRunner.When("The user opens the filter User Type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -317,7 +317,7 @@ this.FeatureBackground();
                             "Lab Technician"});
                 table1.AddRow(new string[] {
                             "Pathologist"});
-#line 38
+#line 39
  testRunner.Then("The user sees the items in the dropdown as the following table", ((string)(null)), table1, "Then ");
 #line hidden
             }
@@ -332,13 +332,13 @@ this.FeatureBackground();
         [NUnit.Framework.TestCaseAttribute("Clinician Associate", null)]
         [NUnit.Framework.TestCaseAttribute("Lab Technician", null)]
         [NUnit.Framework.TestCaseAttribute("Pathologist", null)]
-        public virtual void VerifyFucntionOfEachItemInUserTypeFilter(string @string, string[] exampleTags)
+        public virtual void VerifyFucntionOfEachItemInUserTypeFilter(string userType, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("string", @string);
+            argumentsOfScenario.Add("UserType", userType);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify fucntion of each item in User Type filter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 47
+#line 48
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -361,17 +361,68 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line hidden
-#line 48
+#line 49
  testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 49
+#line 50
  testRunner.When("The user opens the filter User Type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 50
- testRunner.And(string.Format("The user selects an  {0} in the User Type filter", @string), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 51
- testRunner.Then(string.Format("The user sees only {0} records are displayed on User List", @string), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And(string.Format("The user selects an  {0} in the User Type filter", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 52
+ testRunner.Then(string.Format("The user sees only {0} records are displayed on User List", userType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("verify UI of Status filter")]
+        public virtual void VerifyUIOfStatusFilter()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify UI of Status filter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 64
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 65
+ testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 66
+ testRunner.When("The user open the Status filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table2.AddRow(new string[] {
+                            "Enabled"});
+                table2.AddRow(new string[] {
+                            "Disabled"});
+                table2.AddRow(new string[] {
+                            "Invited"});
+#line 67
+ testRunner.Then("The user sees the items in the Status dropdown as the following table:", ((string)(null)), table2, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

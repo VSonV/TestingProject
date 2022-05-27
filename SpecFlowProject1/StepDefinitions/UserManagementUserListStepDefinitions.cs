@@ -299,6 +299,28 @@ namespace TestingProject.StepDefinitions
             _driver.Close();
         }
 
+        [When(@"The user open the Status filter")]
+        public void WhenTheUserOpenTheStatusFilter()
+        {
+            Thread.Sleep(_delayTime);
+            _driver.FindElement(By.Id("vs5__combobox"))?.Click();
+        }
+
+
+        [Then(@"The user sees the items in the Status dropdown as the following table:")]
+        public void ThenTheUserSeesTheItemsInTheStatusDropdownAsTheFollowingTable(Table table)
+        {
+            Thread.Sleep(_delayTime);
+            
+            string tblRow = string.Join("", table.Rows.Select(x => x[0].ToString().Replace(" ", string.Empty)));
+
+            var userTypeRows = _driver.FindElement(By.XPath("//ul[@id='vs5__listbox']"));
+            string tmp = System.Text.RegularExpressions.Regex.Replace(userTypeRows.Text, @"\s+", string.Empty);
+
+            Assert.AreEqual(tmp, tblRow);
+            _driver.Quit();
+        }
+
 
 
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
