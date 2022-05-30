@@ -366,7 +366,7 @@ namespace TestingProject.StepDefinitions
                 GetTableVal(ref resultTbl, 4);
             }
 
-            var filterVal = resultTbl.ToString().Contains(data);
+            var filterVal = resultTbl.ToString().Contains(data, StringComparison.OrdinalIgnoreCase);
             Assert.IsTrue(filterVal);
 
             _driver.Close();

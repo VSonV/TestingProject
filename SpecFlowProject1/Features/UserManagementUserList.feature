@@ -93,9 +93,9 @@ Examples:
 | First name | Tester           |
 | First name | Alexander        |
 | Last name  | Clinic Associate |
-| Last name  | molabtech3       |
-| Last name  | congkien         |
-| Last name  | tcclinician      |
+| Last name  | Gonchavar        |
+| Last name  | kien             |
+| Last name  | TC      |
 | Email      | admin            |
 | Email      | pushkin          |
 | Email      | pushkin          |
