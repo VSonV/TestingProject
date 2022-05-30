@@ -430,10 +430,14 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("verify function of each item in Status filter")]
-        public virtual void VerifyFunctionOfEachItemInStatusFilter()
+        [NUnit.Framework.TestCaseAttribute("Enabled", null)]
+        [NUnit.Framework.TestCaseAttribute("Disabled", null)]
+        [NUnit.Framework.TestCaseAttribute("Invited", null)]
+        public virtual void VerifyFunctionOfEachItemInStatusFilter(string status, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Status", status);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify function of each item in Status filter", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 73
 this.ScenarioInitialize(scenarioInfo);
@@ -465,10 +469,67 @@ this.FeatureBackground();
  testRunner.When("The user open the Status filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 76
- testRunner.And("The user selects a <Status> in the Status filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("The user selects a {0} in the Status filter", status), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 77
- testRunner.Then("xx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("The user sees only {0} Status records filted are displayed on User List", status), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("verify function of Search bar")]
+        [NUnit.Framework.TestCaseAttribute("First name", "Anh", null)]
+        [NUnit.Framework.TestCaseAttribute("First name", "Tester", null)]
+        [NUnit.Framework.TestCaseAttribute("First name", "Alexander", null)]
+        [NUnit.Framework.TestCaseAttribute("Last name", "Clinic Associate", null)]
+        [NUnit.Framework.TestCaseAttribute("Last name", "molabtech3", null)]
+        [NUnit.Framework.TestCaseAttribute("Last name", "congkien", null)]
+        [NUnit.Framework.TestCaseAttribute("Last name", "tcclinician", null)]
+        [NUnit.Framework.TestCaseAttribute("Email", "admin", null)]
+        [NUnit.Framework.TestCaseAttribute("Email", "pushkin", null)]
+        [NUnit.Framework.TestCaseAttribute("Email", "pushkin", null)]
+        [NUnit.Framework.TestCaseAttribute("Email", "tcclinician", null)]
+        public virtual void VerifyFunctionOfSearchBar(string searchedBy, string data, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("searchedBy", searchedBy);
+            argumentsOfScenario.Add("data", data);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("verify function of Search bar", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 85
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 86
+ testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 87
+ testRunner.When(string.Format("The user inputs {0} into the search bar", data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 88
+ testRunner.Then(string.Format("The user sees only records filtered by {0} which meet the condition are displayed" +
+                            " on User List {1}", searchedBy, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

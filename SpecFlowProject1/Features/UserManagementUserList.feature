@@ -75,8 +75,29 @@ Scenario Outline: verify function of each item in Status filter
 	When The user open the Status filter
 	And The user selects a <Status> in the Status filter
 	Then The user sees only <Status> Status records filted are displayed on User List
+
 Examples: 
-| Name     |
+| Status   |
 | Enabled  |
 | Disabled |
 | Invited  |
+
+Scenario Outline: verify function of Search bar
+	Given The user is on the User list
+	When The user inputs <data> into the search bar 
+	Then The user sees only records filtered by <searchedBy> which meet the condition are displayed on User List <data>
+
+Examples: 
+| searchedBy | data             |
+| First name | Anh              |
+| First name | Tester           |
+| First name | Alexander        |
+| Last name  | Clinic Associate |
+| Last name  | molabtech3       |
+| Last name  | congkien         |
+| Last name  | tcclinician      |
+| Email      | admin            |
+| Email      | pushkin          |
+| Email      | pushkin          |
+| Email      | tcclinician      |
+

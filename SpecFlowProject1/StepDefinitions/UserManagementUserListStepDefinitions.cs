@@ -132,7 +132,7 @@ namespace TestingProject.StepDefinitions
 
             var paging = _driver.FindElements(By.ClassName("pagination-wrapper"));//paging
 
-            _driver.Quit();
+            _driver.Close();
 
         }
 
@@ -216,7 +216,7 @@ namespace TestingProject.StepDefinitions
             emailNameBefore.Clear();
             emailNameAfter.Clear();
 
-            _driver.Quit();
+            _driver.Close();
         }
 
         [When(@"The user opens the filter Number Page")]
@@ -234,7 +234,7 @@ namespace TestingProject.StepDefinitions
             var itemPerPageList = _driver.FindElement(By.Id("vs1__listbox")).Text;
             Assert.IsTrue(itemPerPageList.Contains(p0.ToString()) && itemPerPageList.Contains(p1.ToString()));
 
-            _driver.Quit();
+            _driver.Close();
         }
 
         [When(@"The user selects a (.*) per page in the Number Page filter")]
@@ -258,7 +258,7 @@ namespace TestingProject.StepDefinitions
             var pagingContent= _driver.FindElement(By.XPath("//div[@class='paginator']/div[@class='left-side']/p"))?.Text;
             Assert.IsTrue(pagingContent?.Contains(searchStr));
 
-            _driver.Quit();
+            _driver.Close();
         }
 
         [When(@"The user opens the filter User Type")]
@@ -277,7 +277,7 @@ namespace TestingProject.StepDefinitions
             string tmp = System.Text.RegularExpressions.Regex.Replace(userTypeRows.Text, @"\s+", string.Empty);
 
             Assert.AreEqual(tmp, tblRow);
-            _driver.Quit();
+            _driver.Close();
         }
 
         [When(@"The user selects an  (.*) in the User Type filter")]
@@ -318,20 +318,58 @@ namespace TestingProject.StepDefinitions
             string tmp = System.Text.RegularExpressions.Regex.Replace(userTypeRows.Text, @"\s+", string.Empty);
 
             Assert.AreEqual(tmp, tblRow);
-            _driver.Quit();
+            _driver.Close();
+        }
+
+        [When(@"The user selects a (.*) in the Status filter")]
+        public void WhenTheUserSelectsAInTheStatusFilter(string p0)
+        {
+             _driver.FindElement(By.XPath($"//*[text()='{p0}']"))?.Click();
+        }
+
+        [Then(@"The user sees only (.*) Status records filted are displayed on User List")]
+        public void ThenTheUserSeesOnlyStatusRecordsFiltedAreDisplayedOnUserList(string p0)
+        {
+            Thread.Sleep(_delayTime);
+            var statusRows = _driver.FindElements(By.XPath("//td[@class='md-table-cell statusName-column']/div[@class='md-table-cell-container']/i"));
+            foreach (var statusRow in statusRows)
+            {
+                Assert.IsTrue(statusRow.GetAttribute("class")?.Contains(p0.ToLower()));
+            }
+            _driver.Close();
         }
 
 
-        [When(@"The user selects a <Status> in the Status filter")]
-        public void WhenTheUserSelectsAStatusInTheStatusFilter()
+        [When(@"The user inputs (.*) into the search bar")]
+        public void WhenTheUserInputsIntoTheSearchBar(string searchData)
         {
-            throw new PendingStepException();
+            Thread.Sleep(_delayTime);
+            _driver.FindElement(By.XPath("//input[@placeholder='first name, last name, email, additional info']"))?.SendKeys(searchData);
         }
 
-        [Then(@"The user sees only <Status> Status records filted are displayed on User List")]
-        public void ThenTheUserSeesOnlyStatusStatusRecordsFiltedAreDisplayedOnUserList()
+        [Then(@"The user sees only records filtered by (.*) which meet the condition are displayed on User List (.*)")]
+        public void ThenTheUserSeesOnlyRecordsFilteredByFirstNameWhichMeetTheConditionAreDisplayedOnUserList(string searchedBy, string data)
         {
-            throw new PendingStepException();
+            var resultTbl = new StringBuilder();
+            Thread.Sleep(_delayTime);
+            if (searchedBy.Equals("First name"))
+            {
+
+                GetTableVal(ref resultTbl, 1);
+            }
+            else if (searchedBy.Equals("Last name"))
+            {
+                GetTableVal(ref resultTbl, 2);
+            }
+            else// email
+            {
+                GetTableVal(ref resultTbl, 4);
+            }
+
+            var filterVal = resultTbl.ToString().Contains(data);
+            Assert.IsTrue(filterVal);
+
+            _driver.Close();
         }
 
 
