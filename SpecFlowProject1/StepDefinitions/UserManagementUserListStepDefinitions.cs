@@ -19,6 +19,7 @@ namespace TestingProject.StepDefinitions
         private string _Pwd;
         private IConfigurationRoot _configuration;
         private int _delayTime;
+        private bool _IsValid = false;
 
         StringBuilder userTypeBefore;
         StringBuilder firstNameBefore;
@@ -369,6 +370,54 @@ namespace TestingProject.StepDefinitions
             var filterVal = resultTbl.ToString().Contains(data, StringComparison.OrdinalIgnoreCase);
             Assert.IsTrue(filterVal);
 
+            _driver.Close();
+        }
+
+        [When(@"The user input data as the following table:")]
+        public void WhenTheUserInputDataAsTheFollowingTable(Table table)
+        {
+            Thread.Sleep(_delayTime);
+            foreach (var row in table.Rows)
+            {
+                if (row["filter"].Contains("Number per page", StringComparison.OrdinalIgnoreCase))
+                {
+                    _driver.FindElement(By.Id("vs1__combobox"))?.Click();
+                    Thread.Sleep(_delayTime);
+                    _driver.FindElement(By.XPath($"//*[text()='{row["data"]} per page']"))?.Click();
+                }
+                else if (row["filter"].Contains("User type", StringComparison.OrdinalIgnoreCase))
+                {
+                    _driver.FindElement(By.Id("vs4__combobox"))?.Click();
+                    Thread.Sleep(_delayTime);
+                    _driver.FindElement(By.XPath($"//*[text()='{row["data"]}']"))?.Click();
+                }
+                else if (row["filter"].Contains("Status", StringComparison.OrdinalIgnoreCase))
+                {
+                    _driver.FindElement(By.Id("vs5__combobox"))?.Click();
+                    Thread.Sleep(_delayTime);
+                    _driver.FindElement(By.XPath($"//*[text()='{row["data"]}']"))?.Click();
+                }
+                else //search bar
+                {
+                    _driver.FindElement(By.XPath("//input[@placeholder='first name, last name, email, additional info']"))?.SendKeys(row["data"]);
+                }
+            }
+
+            //checking result
+            Thread.Sleep(_delayTime);
+            var userTable = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody/tr"));
+
+            foreach (var rw in userTable)
+            {
+                var validRow = table.Rows.Select(x => rw.Text.Contains(x["data"], StringComparison.OrdinalIgnoreCase)).ToList();
+                _IsValid = validRow.Count>0;
+            }
+        }
+
+        [Then(@"the user sees only records which meet the condition are displayed on User List")]
+        public void ThenTheUserSeesOnlyRecordsWhichMeetTheConditionAreDisplayedOnUserList()
+        {
+            Assert.IsTrue(_IsValid);
             _driver.Close();
         }
 

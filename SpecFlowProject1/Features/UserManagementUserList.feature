@@ -101,3 +101,12 @@ Examples:
 | Email      | pushkin          |
 | Email      | tcclinician      |
 
+Scenario: check combine search
+Given The user is on the User list
+When The user input data as the following table:
+| filter          | data          |
+| Number per page | 25            |
+| User type       | Administrator |
+| Status          | Enabled       |
+| Search bar      | Hà Anh        | #First name
+Then the user sees only records which meet the condition are displayed on User List
