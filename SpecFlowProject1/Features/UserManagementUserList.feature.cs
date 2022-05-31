@@ -584,10 +584,77 @@ testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.Sp
                             "Search bar",
                             "Hà Anh"});
 #line 106
-testRunner.When("The user input data as the following table:", ((string)(null)), table3, "When ");
+testRunner.When("The user inputs data as the following table:", ((string)(null)), table3, "When ");
 #line hidden
 #line 112
 testRunner.Then("the user sees only records which meet the condition are displayed on User List", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("check if filter status of user list is saved after navigating to another page")]
+        public virtual void CheckIfFilterStatusOfUserListIsSavedAfterNavigatingToAnotherPage()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("check if filter status of user list is saved after navigating to another page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 114
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 115
+testRunner.Given("The user is on the User list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "filter",
+                            "data"});
+                table4.AddRow(new string[] {
+                            "Number per page",
+                            "25"});
+                table4.AddRow(new string[] {
+                            "User type",
+                            "Administrator"});
+                table4.AddRow(new string[] {
+                            "Status",
+                            "Enabled"});
+                table4.AddRow(new string[] {
+                            "Search bar",
+                            "Hà Anh"});
+#line 116
+testRunner.When("The user inputs data as the following table:", ((string)(null)), table4, "When ");
+#line hidden
+#line 122
+testRunner.And("the user edits an user record on User List", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 123
+testRunner.When("the user clicks cancel button on the User form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 124
+testRunner.And("the user is redirected to the User List", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 125
+testRunner.Then("the user sees filter status of user list is saved as before", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -20,6 +20,8 @@ namespace TestingProject.StepDefinitions
         private IConfigurationRoot _configuration;
         private int _delayTime;
         private bool _IsValid = false;
+        private int _rowsBefore=0;
+        private int _rowsAfter=0;
 
         StringBuilder userTypeBefore;
         StringBuilder firstNameBefore;
@@ -287,8 +289,6 @@ namespace TestingProject.StepDefinitions
             _driver.FindElement(By.XPath($"//*[text()='{p0}']"))?.Click();
         }
 
-
-
         [Then(@"The user sees only (.*) records are displayed on User List")]
         public void ThenTheUserSeesOnlyRecordsAreDisplayedOnUserList(string p0)
         {
@@ -373,28 +373,28 @@ namespace TestingProject.StepDefinitions
             _driver.Close();
         }
 
-        [When(@"The user input data as the following table:")]
-        public void WhenTheUserInputDataAsTheFollowingTable(Table table)
+        [When(@"The user inputs data as the following table:")]
+        public void WhenTheUserInputsDataAsTheFollowingTable(Table table)
         {
             Thread.Sleep(_delayTime);
+
+            var tmp = _driver.FindElement(By.XPath("//div[@class='md-card-content']"));
+            new Actions(_driver).MoveToElement(tmp).Build().Perform();
             foreach (var row in table.Rows)
             {
                 if (row["filter"].Contains("Number per page", StringComparison.OrdinalIgnoreCase))
                 {
                     _driver.FindElement(By.Id("vs1__combobox"))?.Click();
-                    Thread.Sleep(_delayTime);
                     _driver.FindElement(By.XPath($"//*[text()='{row["data"]} per page']"))?.Click();
                 }
                 else if (row["filter"].Contains("User type", StringComparison.OrdinalIgnoreCase))
                 {
                     _driver.FindElement(By.Id("vs4__combobox"))?.Click();
-                    Thread.Sleep(_delayTime);
                     _driver.FindElement(By.XPath($"//*[text()='{row["data"]}']"))?.Click();
                 }
                 else if (row["filter"].Contains("Status", StringComparison.OrdinalIgnoreCase))
                 {
                     _driver.FindElement(By.Id("vs5__combobox"))?.Click();
-                    Thread.Sleep(_delayTime);
                     _driver.FindElement(By.XPath($"//*[text()='{row["data"]}']"))?.Click();
                 }
                 else //search bar
@@ -420,6 +420,62 @@ namespace TestingProject.StepDefinitions
             Assert.IsTrue(_IsValid);
             _driver.Close();
         }
+
+        [When(@"the user edits an user record on User List")]
+        public void WhenTheUserEditsAnUserRecordOnUserList()
+        {
+            var userTable = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody"));
+            _rowsBefore = userTable.Count;
+            if (_rowsBefore > 0)
+            {
+                //open edit user form
+                userTable[0].Click();
+                Thread.Sleep(_delayTime);
+
+                //click edit button
+                _driver.FindElement(By.XPath("//button[@class='md-button lims-form-button md-primary user-edit-btn md-theme-default']"))?.Click();
+                Thread.Sleep(_delayTime);
+
+                ////edit data
+                //var telephoneElement =_driver.FindElement(By.XPath("//div[@class='md-field md-theme-default md-has-placeholder']/input[@class='md-input']"));
+                //telephoneElement.Clear();
+                //telephoneElement.SendKeys("123456789");
+                //Thread.Sleep(_delayTime);
+            }
+        }
+
+        [When(@"the user clicks cancel button on the User form")]
+        public void WhenTheUserClicksCancelButtonOnTheUserForm()
+        {
+            //press cancel of edit action
+            _driver.FindElement(By.XPath("//button[@class='md-button lims-form-button md-theme-default']"))?.Click();
+            Thread.Sleep(_delayTime);
+
+            ////click confirm unsave data
+            //_driver.FindElement(By.XPath("//div[@class='md-dialog-actions']/button[@class='md-button lims-form-button md-primary md-theme-default']"))?.Click();
+
+            //press cancel again to come back to previous screen
+            _driver.FindElement(By.XPath("//button[@class='md-button lims-form-button md-theme-default']"))?.Click();
+            Thread.Sleep(_delayTime);
+
+           
+        }
+
+        [When(@"the user is redirected to the User List")]
+        public void WhenTheUserIsRedirectedToTheUserList()
+        {
+            var userTable = _driver.FindElements(By.XPath("//div[@class='table-fix-header']/tbody"));
+            _rowsAfter = userTable.Count;
+            
+        }
+
+        [Then(@"the user sees filter status of user list is saved as before")]
+        public void ThenTheUserSeesFilterStatusOfUserListIsSavedAsBefore()
+        {
+            Assert.IsTrue(_rowsAfter == _rowsBefore);
+            _driver.Close();
+        }
+
 
 
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
