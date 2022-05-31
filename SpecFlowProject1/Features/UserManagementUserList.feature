@@ -123,3 +123,12 @@ And the user edits an user record on User List
 When the user clicks cancel button on the User form
 And the user is redirected to the User List
 Then the user sees filter status of user list is saved as before
+
+Scenario: verify function of the button "Add User"
+Given The user is on the User list
+When the user clicks button Add User on User List
+Then the user sees a dialog "Select user type" with elements as following:
+| User type dropdown |
+| Countinue button   |
+| Cancel button      |
+| Cross button       |

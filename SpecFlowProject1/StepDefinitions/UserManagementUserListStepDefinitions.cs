@@ -476,6 +476,22 @@ namespace TestingProject.StepDefinitions
             _driver.Close();
         }
 
+        [When(@"the user clicks button Add User on User List")]
+        public void WhenTheUserClicksButtonAddUserOnUserList()
+        {
+            _driver.FindElement(By.XPath("//button[@class='md-button btn-addUser md-theme-default']")).Click();
+        }
+
+        [Then(@"the user sees a dialog ""([^""]*)"" with elements as following:")]
+        public void ThenTheUserSeesADialogWithElementsAsFollowing(string p0, Table table)
+        {
+            _driver.FindElement(By.XPath("//div[@class='vs__selected-options']"));
+            _driver.FindElement(By.XPath("//button[@class='md-button lims-form-button md-theme-default']"));
+            _driver.FindElement(By.XPath("//button[@class='md-button lims-form-button md-primary md-theme-default']"));
+            _driver.FindElement(By.XPath("//i[@class='md-icon md-icon-font md-theme-default']"));
+            _driver.Close();
+        }
+
 
 
         private void GetTableVal(ref StringBuilder fieldVal, int colPosition)
