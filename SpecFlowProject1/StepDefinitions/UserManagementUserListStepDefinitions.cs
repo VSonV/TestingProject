@@ -110,6 +110,9 @@ namespace TestingProject.StepDefinitions
             //click on User management menu item
             Thread.Sleep(_delayTime);
             _driver.FindElement(By.XPath("//span[text()='User management']")).Click();
+
+            var mainPageLement = _driver.FindElement(By.XPath("//div[@class='md-card-content']"));
+            new Actions(_driver).MoveToElement(mainPageLement).Build().Perform();
         }
 
         [Given(@"The user is on the User list")]
@@ -281,7 +284,7 @@ namespace TestingProject.StepDefinitions
         public void ThenTheUserSeesTheItemsInTheDropdownAsTheFollowingTable(Table table)
         {
             string tblRow = string.Join("", table.Rows.Select(x => x[0].ToString().Replace(" ", string.Empty)));
-
+            Thread.Sleep(_delayTime);
             var userTypeRows = _driver.FindElement(By.XPath("//ul[@id='vs4__listbox']"));
             string tmp = System.Text.RegularExpressions.Regex.Replace(userTypeRows.Text, @"\s+", string.Empty);
 
@@ -384,8 +387,7 @@ namespace TestingProject.StepDefinitions
         {
             Thread.Sleep(_delayTime);
 
-            var tmp = _driver.FindElement(By.XPath("//div[@class='md-card-content']"));
-            new Actions(_driver).MoveToElement(tmp).Build().Perform();
+            
             foreach (var row in table.Rows)
             {
                 if (row["filter"].Contains("Number per page", StringComparison.OrdinalIgnoreCase))
