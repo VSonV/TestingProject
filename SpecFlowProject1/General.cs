@@ -47,12 +47,12 @@ namespace TestingProject
 
     }
 
-    public enum RunEnvironment : sbyte
-    {
-        Local = 1,
-        Staging,
-        Production
-    }
+    //public enum RunEnvironment : sbyte
+    //{
+    //    Local = 1,
+    //    Staging,
+    //    Production
+    //}
 
     public enum Browser : sbyte
     {

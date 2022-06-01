@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release;local;staging;production</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -36,11 +37,25 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="Support\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Update="appsettings.local.json">
+      <IsTransformFile>true</IsTransformFile>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="appsettings.production.json">
+      <IsTransformFile>true</IsTransformFile>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="appsettings.staging.json">
+      <IsTransformFile>true</IsTransformFile>
+      <DependentUpon>appsettings.json</DependentUpon>
     </None>
   </ItemGroup>
 

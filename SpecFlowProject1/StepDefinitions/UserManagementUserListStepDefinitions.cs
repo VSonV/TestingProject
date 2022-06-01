@@ -41,31 +41,36 @@ namespace TestingProject.StepDefinitions
             _configuration = general.GetConfigurationRoot();
 
             //load configuration data from appsettings.json
-            var env = int.Parse(_configuration.GetSection("AppSettings").GetSection("RunEnvironment").Value ?? RunEnvironment.Local.ToString());
-            switch (env)
-            {
-                case (int)RunEnvironment.Production:
-                    _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlProd").Value;
-                    _UserName = _configuration.GetSection("AppSettings").GetSection("UserProd").Value;
-                    _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdProd").Value;
-                    _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeProd").Value));
-                    _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeProd").Value);
-                    break;
-                case (int)RunEnvironment.Staging:
-                    _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlStaging").Value;
-                    _UserName = _configuration.GetSection("AppSettings").GetSection("UserStaging").Value;
-                    _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdStaging").Value;
-                    _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeStaging").Value));
-                    _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeStaging").Value);
-                    break;
-                default:
-                    _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlLocal").Value;
-                    _UserName = _configuration.GetSection("AppSettings").GetSection("UserLocal").Value;
-                    _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdLocal").Value;
-                    _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeLocal").Value));
-                    _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeLocal").Value);
-                    break;
-            }
+            _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrl").Value;
+            _UserName = _configuration.GetSection("AppSettings").GetSection("User").Value;
+            _Pwd = _configuration.GetSection("AppSettings").GetSection("Pwd").Value;
+            _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserType").Value));
+            _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTime").Value);
+            //var env = int.Parse(_configuration.GetSection("AppSettings").GetSection("RunEnvironment").Value ?? RunEnvironment.Local.ToString());
+            //switch (env)
+            //{
+            //    case (int)RunEnvironment.Production:
+            //        _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlProd").Value;
+            //        _UserName = _configuration.GetSection("AppSettings").GetSection("UserProd").Value;
+            //        _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdProd").Value;
+            //        _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeProd").Value));
+            //        _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeProd").Value);
+            //        break;
+            //    case (int)RunEnvironment.Staging:
+            //        _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlStaging").Value;
+            //        _UserName = _configuration.GetSection("AppSettings").GetSection("UserStaging").Value;
+            //        _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdStaging").Value;
+            //        _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeStaging").Value));
+            //        _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeStaging").Value);
+            //        break;
+            //    default:
+            //        _HomePageUrl = _configuration.GetSection("AppSettings").GetSection("HomeUrlLocal").Value;
+            //        _UserName = _configuration.GetSection("AppSettings").GetSection("UserLocal").Value;
+            //        _Pwd = _configuration.GetSection("AppSettings").GetSection("PwdLocal").Value;
+            //        _driver = general.SetBrowserDriver(int.Parse(_configuration.GetSection("AppSettings").GetSection("BrowserTypeLocal").Value));
+            //        _delayTime = int.Parse(_configuration.GetSection("AppSettings").GetSection("DeplayTimeLocal").Value);
+            //        break;
+            //}
 
             //open the browser
             _driver.Navigate().GoToUrl(_HomePageUrl);
@@ -103,6 +108,7 @@ namespace TestingProject.StepDefinitions
             _driver.FindElement(By.XPath("//li[@to='/accounts']"))?.Click();
 
             //click on User management menu item
+            Thread.Sleep(_delayTime);
             _driver.FindElement(By.XPath("//span[text()='User management']")).Click();
         }
 
