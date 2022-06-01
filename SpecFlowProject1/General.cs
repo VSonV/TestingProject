@@ -4,7 +4,6 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Opera;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -37,13 +36,9 @@ namespace TestingProject
                     new DriverManager().SetUpDriver(new EdgeConfig());
                     driver = new EdgeDriver();
                     break;
-                case (int)Browser.IE:
+                default:
                     new DriverManager().SetUpDriver(new InternetExplorerConfig());
                     driver = new InternetExplorerDriver();
-                    break;
-                default:
-                    new DriverManager().SetUpDriver(new OperaConfig());
-                    driver = new OperaDriver();
                     break;
             }
 
@@ -64,8 +59,7 @@ namespace TestingProject
         Chrome = 1,
         FireFox,
         Edge,
-        IE,
-        Opera
+        IE
     }
 
     public class UserType

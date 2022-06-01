@@ -1,8 +1,13 @@
+D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.csproj.AssemblyReference.cache
+D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.AssemblyInfoInputs.cache
+D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.AssemblyInfo.cs
+D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.csproj.CoreCompileInputs.cache
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\testhost.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\LivingDoc.Dtos.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\LivingDoc.SpecFlowPlugin.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\testhost.exe
-D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\testhost.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
@@ -12,6 +17,7 @@ D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\nunit
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\testcentric.engine.metadata.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\specflow.json
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\appsettings.json
+D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\TestingProject.dll.config
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\TestingProject.deps.json
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\TestingProject.runtimeconfig.json
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\TestingProject.runtimeconfig.dev.json
@@ -129,11 +135,6 @@ D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\runti
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
-D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.csproj.AssemblyReference.cache
-D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.GeneratedMSBuildEditorConfig.editorconfig
-D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.AssemblyInfoInputs.cache
-D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.AssemblyInfo.cs
-D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.csproj.CoreCompileInputs.cache
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.csproj.CopyComplete
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.dll
 D:\source\AutoTest\TestingProject\SpecFlowProject1\obj\Debug\netcoreapp3.1\TestingProject.pdb
